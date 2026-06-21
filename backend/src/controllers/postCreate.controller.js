@@ -40,4 +40,55 @@ async function createPost(req, res) {
   });
 }
 
-module.exports = { createPost };
+async function getPostsForSameUser(req, res) {
+  const token = req.cookies.jwt;
+  if (!token) {
+    return res.status(401).json({
+      message: "login before access the post",
+    });
+  }
+  let decoded = null;
+  try {
+    decoded = await jwt.verify(token, process.env.JWT_SECRET);
+  } catch (error) {
+    return res.status(401).json({
+      message: "user not authorised",
+    });
+  }
+  const posts = await userPostModel.find({
+    userId: decoded.id,
+  });
+
+  res.status(200).json({
+    message: "posts fetched sucessfully",
+    data: {
+      posts,
+    },
+  });
+}
+
+async function getAllUsersPosts(req, res) {
+  const token = req.cookies.jwt;
+  if (!token) {
+    return res.status(401).json({
+      message: "unacthoerised access",
+    });
+  }
+  let decoded = null;
+  try {
+    decoded = await jwt.verify(token, process.env.JWT_SECRET);
+  } catch (error) {
+    return res.status(401).json({
+      message: "unauthorised access",
+    });
+  }
+
+  const allPost = await userPostModel.find();
+
+  res.status(200).json({
+    message: "all posts",
+    allposts: allPost,
+  });
+}
+
+module.exports = { createPost, getPostsForSameUser, getAllUsersPosts };
