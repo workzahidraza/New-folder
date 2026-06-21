@@ -5,7 +5,7 @@ async function follower(req, res) {
   const followee = req.params.userName;
 
   if (followee == follower) {
-   return res.status(400).json({
+    return res.status(400).json({
       message: "you cannot follow your self",
     });
   }
@@ -30,7 +30,25 @@ async function follower(req, res) {
     },
   });
 }
+async function unfollow(req, res) {
+  const followerUserName = req.user.userName;
+  const followeeUserName = req.params.userName;
 
+  const checkFollowing = await followModel.findOne({
+    follower: followerUserName,
+    followee: followeeUserName,
+  });
+  if (!checkFollowing) {
+    return res.status(404).json({
+      message: "not found",
+    });
+  }
+  const unfollowUser= await followModel.findByIdAndDelete(checkFollowing._id);
+  res.status(200).json({
+    message: `${followerUserName} unfollows ${followeeUserName} sucessfully unfollowed`,
+  });
+}
 module.exports = {
   follower,
+  unfollow,
 };
