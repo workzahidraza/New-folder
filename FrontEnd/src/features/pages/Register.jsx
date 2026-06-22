@@ -22,6 +22,19 @@ const Register = () => {
       alert(error);
     }
   }
+  async function getUser() {
+    try {
+      const AllUsers = await axios.get(
+        "http://localhost:3000/api/auth/getUser",
+      );
+      const all = AllUsers.data;
+      const RegisteredUserName = AllUsers.data.data.map((e) => e.userName);
+      console.log(all);
+      console.log(RegisteredUserName);
+    } catch (error) {
+      alert(error);
+    }
+  }
   return (
     <>
       <div id="registerForm">
@@ -43,8 +56,10 @@ const Register = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <button>Submit</button>
+
           <h3>login if already registered?</h3>
         </form>
+        <button onClick={getUser}>getuser</button>
       </div>
     </>
   );
