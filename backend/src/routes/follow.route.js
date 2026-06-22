@@ -7,4 +7,5 @@ const userCheck = require("../middleware/authCheck");
 followRoute.post("/:userName", userCheck, followContoller.follower);
 followRoute.delete("/:userName", userCheck, followContoller.unfollow);
 
+
 module.exports = followRoute;

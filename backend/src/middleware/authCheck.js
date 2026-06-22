@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-async function authMiddleware(req, res,next) {
+async function authMiddleware(req, res, next) {
   const token = req.cookies.jwt;
   if (!token) {
     return res.status(401).json({
@@ -8,13 +8,13 @@ async function authMiddleware(req, res,next) {
   }
   let decoded = null;
   try {
-    decoded = await jwt.verify(token, process.env.JWT_SECRET);
+    decoded = jwt.verify(token, process.env.JWT_SECRET);
   } catch (error) {
     return res.status(401).json({
       message: "unauthorised access",
     });
   }
-  req.user=decoded
+  req.user = decoded;
   next();
 }
 

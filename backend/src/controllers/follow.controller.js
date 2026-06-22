@@ -1,4 +1,5 @@
 const followModel = require("../models/follow.model");
+const userModel = require("../models/auth.model");
 
 async function follower(req, res) {
   const follower = req.user.userName;
@@ -43,7 +44,7 @@ async function unfollow(req, res) {
       message: "not found",
     });
   }
-  const unfollowUser= await followModel.findByIdAndDelete(checkFollowing._id);
+  const unfollowUser = await followModel.findByIdAndDelete(checkFollowing._id);
   res.status(200).json({
     message: `${followerUserName} unfollows ${followeeUserName} sucessfully unfollowed`,
   });

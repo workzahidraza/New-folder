@@ -13,4 +13,5 @@ postRouter.post(
 );
 postRouter.get("/posts", authMiddleware, postController.getPostsForSameUser);
 postRouter.get("/posts/all", authMiddleware, postController.getAllUsersPosts);
+postRouter.post("/like/:postId", authMiddleware, postController.likePost);
 module.exports = postRouter;
