@@ -2,6 +2,7 @@ import React from "react";
 import "./home.scss";
 import boy from "../../assets/boy.png";
 import "remixicon/fonts/remixicon.css";
+import PostCard from "../posts/pages/PostCard";
 // import { RiHeart3Fill } from "react-icons/ri";
 const Home = () => {
   return (
@@ -10,7 +11,7 @@ const Home = () => {
         <div className="left-content"></div>
         <div className="center-content">
           <div className="main-content">
-            <div className="post-card">
+            {/* <div className="post-card">
               <div className="top-profile">
                 <img src={boy} alt="" />
                 <h2>username</h2>
@@ -29,7 +30,9 @@ const Home = () => {
                   <i class="ri-bookmark-line"></i>
                 </div>
               </div>
-            </div>
+            </div> */}
+            <PostCard />
+            <PostCard />
           </div>
         </div>
         {/* <div className="right-content"></div> */}
