@@ -1,9 +1,11 @@
 import React from "react";
 import "../styles/form.scss";
+import { Link } from "react-router-dom";
+import Register from "./Register";
 
 const Login = () => {
   const submitHandler = (e) => {
-    e.preventDe;
+    e.preventDefault();
   };
   return (
     <>
@@ -23,7 +25,9 @@ const Login = () => {
             />
             <button>Login</button>
           </form>
-          <h2>If not Register? </h2>
+          <h2>
+            If not Register? <Link to="/register">Register</Link>
+          </h2>
         </div>
       </main>
     </>
