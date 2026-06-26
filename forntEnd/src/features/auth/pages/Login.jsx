@@ -12,15 +12,17 @@ const Login = () => {
       <main>
         <div className="form-container">
           <h1>Login</h1>
-          <form id="form">
+          <form onSubmit={submitHandler} id="form">
             <input
               type="text"
               name="username"
+              id="username"
               placeholder="enter the username"
             />
             <input
               type="password"
               name="password"
+              id="password"
               placeholder="enter the password"
             />
             <button>Login</button>

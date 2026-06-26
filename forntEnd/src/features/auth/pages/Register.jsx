@@ -11,11 +11,19 @@ const Register = () => {
             <input
               type="text"
               name="username"
+              id="username"
               placeholder="enter the username"
+            />
+            <input
+              type="email"
+              name="useremail"
+              id="useremail"
+              placeholder="enter the useremail"
             />
             <input
               type="password"
               name="password"
+              id="password"
               placeholder="enter the password"
             />
             <button>Register</button>
