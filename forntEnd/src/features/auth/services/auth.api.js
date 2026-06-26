@@ -24,9 +24,10 @@ export async function login(userName,userPassword) {
     })
     return response.data;
 }
+
+// /getUser
 export async function getUser() {
     const response=await api.get('/getUser')
     return response.data
 }
 
-// /getUser

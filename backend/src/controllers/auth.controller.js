@@ -91,6 +91,9 @@ async function loginController(req, res) {
 
   res.status(200).json({
     message: "loggined",
+    data: {
+      isUserRegistered,
+    },
   });
 }
 module.exports = {
