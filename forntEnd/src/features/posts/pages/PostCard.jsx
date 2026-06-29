@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import "../../home/home.css";
 import boy from "../../../assets/boy.png";
 import "remixicon/fonts/remixicon.css";
+import { createPost } from "../services/post.api";
+
 const PostCard = () => {
+  useEffect(() => {
+    const data = async () => {
+      await createPost.data;
+    };
+    console.log(data());
+  }, []);
+
   return (
     <>
       <div className="post-card">
@@ -14,7 +23,7 @@ const PostCard = () => {
         <div className="center-profile">
           <img src={boy} alt="" />
         </div>
-        <div className="bottom-profile"> 
+        <div className="bottom-profile">
           <div className="left-icons">
             <i class="ri-heart-line"></i>
             <i class="ri-share-forward-line"></i>

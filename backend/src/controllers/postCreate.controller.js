@@ -6,9 +6,11 @@ const likePostModel = require("../models/likePost.model");
 const userModel = require("../models/auth.model");
 
 async function createPost(req, res) {
-  console.log(req.body);
-  console.log(req.file);
-  console.log(req.cookies.jwt);
+  // console.log(req.body);
+  // console.log(req.file);
+  // console.log(req.cookies.jwt);
+  // console.log(req.user)
+  const decoded = req.user;
   // const token = req.cookies.jwt;
   // if (!token) {
   //   return res.status(401).json({
@@ -23,7 +25,7 @@ async function createPost(req, res) {
   //     message: "user not authorised",
   //   });
   // }
-  console.log(decoded);
+  // console.log(decoded);
 
   const file = await imagekit.files.upload({
     file: await toFile(Buffer.from(req.file.buffer), "file"),

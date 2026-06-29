@@ -32,7 +32,7 @@ const Home = () => {
               </div>
             </div> */}
             <PostCard />
-            <PostCard />
+            {/* <PostCard /> */}
           </div>
         </div>
         {/* <div className="right-content"></div> */}
